@@ -11,6 +11,6 @@ def home():
     cursor.execute("SELECT * FROM autos")
     autos = cursor.fetchall()
     return render_template('papu.html',autos=autos)
-    
+
 if __name__ == "__main__":
     app.run(debug=True)
