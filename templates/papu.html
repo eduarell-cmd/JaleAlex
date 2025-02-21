@@ -7,6 +7,7 @@
     <title>Document</title>
 </head>
 <body>
+    <h1>LOTE DE CARROS</h1>
     <table id="myTable" class="display">
         <thead>
             <tr>
@@ -23,18 +24,20 @@
             </tr>
         </thead>
         <tbody>
+            {% for auto in autos %}
             <tr>
-                <td>Row 1 Data 1</td>
-                <td>Row 1 Data 2</td>
-                <td>Row 1 Data 1</td>
-                <td>Row 1 Data 2</td>
-                <td>Row 1 Data 1</td>
-                <td>Row 1 Data 2</td>
-                <td>Row 1 Data 1</td>
-                <td>Row 1 Data 2</td>
-                <td>Row 1 Data 1</td>
-                <td>Row 1 Data 2</td>
+                <td>{{auto.modelo}}</td>
+                <td>{{auto.marca}}</td>
+                <td>{{auto.año}}</td>
+                <td>{{auto.color}}</td>
+                <td>{{auto.transmision}}</td>
+                <td>{{auto.motor}}</td>
+                <td>{{auto.litros}}</td>
+                <td>{{auto.hp}}</td>
+                <td>{{auto.puertas}}</td>
+                <td>{{auto.tipo_de_carro}}</td>
             </tr>
+            {% endfor %}
         </tbody>
     </table>
     <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
