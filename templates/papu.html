@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.datatables.net/2.2.2/css/dataTables.dataTables.css"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <title>Document</title>
 </head>
 <body>
@@ -11,35 +12,44 @@
     <table id="myTable" class="display">
         <thead>
             <tr>
-                <th>Model</th>
-                <th>Branch</th>
-                <th>Year</th>
-                <th>Color</th>
-                <th>Transmition</th>
-                <th>Engine</th>
-                <th>Liters</th>
-                <th>Hp</th>
-                <th>Doors</th>
-                <th>Type of car</th>
+                <th style="text-align: center;">Model</th>
+                <th style="text-align: center;">Branch</th>
+                <th style="text-align: center;">Year</th>
+                <th style="text-align: center;">Color</th>
+                <th style="text-align: center;">Transmition</th>
+                <th style="text-align: center;">Engine</th>
+                <th style="text-align: center;">Liters</th>
+                <th style="text-align: center;">Hp</th>
+                <th style="text-align: center;">Doors</th>
+                <th style="text-align: center;">Type of car</th>
+                <th style="text-align: center;">Price</th>
+                <th style="text-align: center;">cotizado</th>
             </tr>
         </thead>
         <tbody>
             {% for auto in autos %}
             <tr>
-                <td>{{auto.modelo}}</td>
-                <td>{{auto.marca}}</td>
-                <td>{{auto.año}}</td>
-                <td>{{auto.color}}</td>
-                <td>{{auto.transmision}}</td>
-                <td>{{auto.motor}}</td>
-                <td>{{auto.litros}}</td>
-                <td>{{auto.hp}}</td>
-                <td>{{auto.puertas}}</td>
-                <td>{{auto.tipo_de_carro}}</td>
+                <td style="text-align: center;">{{auto.modelo}}</td>
+                <td style="text-align: center;">{{auto.marca}}</td>
+                <td style="text-align: center;">{{auto.año}}</td>
+                <td style="text-align: center;">{{auto.color}}</td>
+                <td style="text-align: center;">{{auto.transmision}}</td>
+                <td style="text-align: center;">{{auto.motor}}</td>
+                <td style="text-align: center;">{{auto.litros}}</td>
+                <td style="text-align: center;">{{auto.hp}}</td>
+                <td style="text-align: center;">{{auto.puertas}}</td>
+                <td style="text-align: center;">{{auto.tipo_de_carro}}</td>
+                <td style="text-align: center;">{{auto.precio}}</td>
+                <td style="text-align: center;">
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal1<?php echo $student['matricula']; ?>">
+                        Cotiza
+                    </button>
+                </td>
             </tr>
             {% endfor %}
         </tbody>
     </table>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
     <script src="https://cdn.datatables.net/2.2.2/js/dataTables.js"></script>
     <script>
