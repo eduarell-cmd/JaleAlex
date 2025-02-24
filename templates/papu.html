@@ -11,31 +11,33 @@
     <table id="myTable" class="display">
         <thead>
             <tr>
-                <th>Model</th>
-                <th>Branch</th>
-                <th>Year</th>
-                <th>Color</th>
-                <th>Transmition</th>
-                <th>Engine</th>
-                <th>Liters</th>
-                <th>Hp</th>
-                <th>Doors</th>
-                <th>Type of car</th>
+                <th style="text-align: center;">Model</th>
+                <th style="text-align: center;">Branch</th>
+                <th style="text-align: center;">Year</th>
+                <th style="text-align: center;">Color</th>
+                <th style="text-align: center;">Transmition</th>
+                <th style="text-align: center;">Engine</th>
+                <th style="text-align: center;">Liters</th>
+                <th style="text-align: center;">Hp</th>
+                <th style="text-align: center;">Doors</th>
+                <th style="text-align: center;">Type of car</th>
+                <th style="text-align: center;">Price</th>
             </tr>
         </thead>
         <tbody>
             {% for auto in autos %}
             <tr>
-                <td>{{auto.modelo}}</td>
-                <td>{{auto.marca}}</td>
-                <td>{{auto.año}}</td>
-                <td>{{auto.color}}</td>
-                <td>{{auto.transmision}}</td>
-                <td>{{auto.motor}}</td>
-                <td>{{auto.litros}}</td>
-                <td>{{auto.hp}}</td>
-                <td>{{auto.puertas}}</td>
-                <td>{{auto.tipo_de_carro}}</td>
+                <td style="text-align: center;">{{auto.modelo}}</td>
+                <td style="text-align: center;">{{auto.marca}}</td>
+                <td style="text-align: center;">{{auto.año}}</td>
+                <td style="text-align: center;">{{auto.color}}</td>
+                <td style="text-align: center;">{{auto.transmision}}</td>
+                <td style="text-align: center;">{{auto.motor}}</td>
+                <td style="text-align: center;">{{auto.litros}}</td>
+                <td style="text-align: center;">{{auto.hp}}</td>
+                <td style="text-align: center;">{{auto.puertas}}</td>
+                <td style="text-align: center;">{{auto.tipo_de_carro}}</td>
+                <td style="text-align: center;">{{auto.precio}}</td>
             </tr>
             {% endfor %}
         </tbody>
