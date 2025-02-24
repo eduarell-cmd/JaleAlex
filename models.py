@@ -1,4 +1,3 @@
-from app import autos
 #Opcional por si le queremos meter mas chile al queso
 class cliente:
     def __init__(self,nombre,apellido,edad,telefono,email,curp,rfc):
@@ -93,12 +92,12 @@ class carro:
         # Code to delete car record
         del self
 class ProcesoVenta:
-    def __init__(self, carro, cliente):
+    def __init__(self, carro):
         self.carro = carro
         self.cliente = cliente
 
-    def validar_costo(self):
-        precio_carro = self.carro.precio
+    def validar_costo(self,carro):
+        precio_carro = carro.precio
         opciones_financiamiento = {
             12: 0.05,  
             24: 0.10,  
@@ -150,6 +149,5 @@ class Agencia:
 
     def __str__(self):
         return f"Carros: {self.carros} Clientes: {self.clientes} Ventas: {self.ventas}"
-carros = autos
-nissan = Agencia() 
-nissan.inventario(carros)
+
+
