@@ -1,4 +1,5 @@
 /venv
+/env
 # Ignorar archivos de Python
 __pycache__/
 conn2.py
