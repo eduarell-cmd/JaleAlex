@@ -1,4 +1,6 @@
 #Opcional por si le queremos meter mas chile al queso
+from conn import *
+
 class cliente:
     def __init__(self,nombre,apellido,edad,telefono,email,curp,rfc):
         self.nombre = nombre
@@ -145,6 +147,10 @@ class Agencia:
     def vender_carro(self,cliente,carro):
         self.ventas.append({"cliente":cliente,"carro":carro})
         self.carros.remove(carro)
+        conn = get_db_connection()
+        cursor = conn.cursor()
+        cursor.execute("SELECT * FROM autos")
+
         #conectar con la base de datos y guardar la venta, remover el csrro de inventario
 
     def __str__(self):
