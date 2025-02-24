@@ -8,7 +8,7 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>LOTE DE CARROS</h1>
+    <h1>LOTE DE CARROS</h1>   
     <table id="myTable" class="display">
         <thead>
             <tr>
@@ -29,21 +29,21 @@
         <tbody>
             {% for auto in autos %}
             <tr>
-                <td style="text-align: center;">{{auto.modelo}}</td>
-                <td style="text-align: center;">{{auto.marca}}</td>
-                <td style="text-align: center;">{{auto.año}}</td>
+                <td style="text-align: center;">{{auto.model}}</td>
+                <td style="text-align: center;">{{auto.branch}}</td>
+                <td style="text-align: center;">{{auto.year}}</td>
                 <td style="text-align: center;">{{auto.color}}</td>
-                <td style="text-align: center;">{{auto.transmision}}</td>
-                <td style="text-align: center;">{{auto.motor}}</td>
-                <td style="text-align: center;">{{auto.litros}}</td>
+                <td style="text-align: center;">{{auto.transmition}}</td>
+                <td style="text-align: center;">{{auto.engine}}</td>
+                <td style="text-align: center;">{{auto.liters}}</td>
                 <td style="text-align: center;">{{auto.hp}}</td>
-                <td style="text-align: center;">{{auto.puertas}}</td>
-                <td style="text-align: center;">{{auto.tipo_de_carro}}</td>
+                <td style="text-align: center;">{{auto.doors}}</td>
+                <td style="text-align: center;">{{auto.car_type}}</td>
                 <td style="text-align: center;">{{auto.precio}}</td>
                 <td style="text-align: center;">
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal1<?php echo $student['matricula']; ?>">
-                        Cotiza
-                    </button>
+                        <a href="{{ url_for('venta') }}" type="button" class="btn btn-primary">
+                            Cotiza
+                        </a>
                 </td>
             </tr>
             {% endfor %}
