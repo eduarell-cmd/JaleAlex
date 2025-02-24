@@ -1,7 +1,7 @@
 from flask import *
 from flask_sqlalchemy import SQLAlchemy
 from conn import *
-from arrayGet import *
+from models import *
 app = Flask(__name__)
 
 
@@ -15,7 +15,7 @@ def home():
 
 @app.route("/venta")
 def venta():
-    
+    financiamientos = ProcesoVenta.validar_costo()
     return render_template('venta.html')
 
 
