@@ -8,36 +8,44 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>LOTE DE CARROS</h1>
-    <div class="input-group mb-3">
-        <span class="input-group-text">%</span>
-        <input placeholder= "Ingrese el porcentaje de enganche (entre 20% y 50%):" type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
-        <span class="input-group-text">.00</span>
-      </div>
-      
-    <table id="myTable" class="display">
-        <thead>
-            <tr>
-                <th>Meses</th>
-                <th>Enganche</th>
-                <th>Mensualidad</th>
-                <th>Interes</th>
-                <th>Monto Total con Interes</th>
-            </tr>
-        </thead>
-        <tbody>
-            
-            {% for item in tabla_financiamiento %}
-            <tr>
-                <td>${item.meses}</td>
-                <td>${item.enganche}</td>
-                <td>${item.mensualidad}</td>
-                <td>${item.interes}</td>
-                <td>${item.monto_total_con_interes}</td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+    <header class="bg-primary text-white text-center py-3">
+        <h1>Lote de Carros</h1>
+    </header>
+    
+    
+    <section class="my-5"></section>
+        <div class="container">
+            <div class="input-group mb-3">
+                <span class="input-group-text">%</span>
+                <input placeholder= "Ingrese el porcentaje de enganche (entre 20% y 50%):" type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+                <span class="input-group-text">.00</span>
+            </div>
+            <table id="myTable" class="display">
+                <thead>
+                    <tr>
+                        <th>Meses</th>
+                        <th>Enganche</th>
+                        <th>Mensualidad</th>
+                        <th>Interes</th>
+                        <th>Monto Total con Interes</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                    {% for item in financiamientos %}
+                    <tr>
+                        <td>${item.meses}</td>
+                        <td>${item.enganche}</td>
+                        <td>${item.mensualidad}</td>
+                        <td>${item.interes}</td>
+                        <td>${item.monto_total_con_interes}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </section>
+    
     <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
     <script src="https://cdn.datatables.net/2.2.2/js/dataTables.js"></script>
     <script>
