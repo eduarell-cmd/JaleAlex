@@ -10,8 +10,8 @@
 <body>
     <h1>LOTE DE CARROS</h1>
     <div class="input-group mb-3">
-        <span class="input-group-text">$</span>
-        <input placeholder= "Ingrese el porcentaje de enganche (entre 20 y 50):" type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+        <span class="input-group-text">%</span>
+        <input placeholder= "Ingrese el porcentaje de enganche (entre 20% y 50%):" type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
         <span class="input-group-text">.00</span>
       </div>
       
@@ -26,7 +26,8 @@
             </tr>
         </thead>
         <tbody>
-            {% for auto in autos %}
+            
+            {% for item in tabla_financiamiento %}
             <tr>
                 <td>${item.meses}</td>
                 <td>${item.enganche}</td>
