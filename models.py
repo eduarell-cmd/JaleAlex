@@ -133,7 +133,7 @@ class Agencia:
     
     def inventario(self,arr):
         for auto in arr:
-            car = carro(auto["modelo"],auto["marca"],auto["año"],auto["color"],auto["transmision"],["motor"],["litros"],["hp"],["puertas"],["tipo_de_carro"],["price"])
+            car = carro(auto["modelo"],auto["marca"],auto["año"],auto["color"],auto["transmision"],auto["motor"],auto["litros"],auto["hp"],auto["puertas"],auto["tipo_de_carro"],auto["precio"])
             self.add_carro(car)
 
     def add_carro(self,carro):
