@@ -12,11 +12,11 @@ class ProcesoVenta:
         }
 
         
-        porcentaje_enganche = float(input("Ingrese el porcentaje de enganche (entre 20 y 50): "))
-        if porcentaje_enganche < 20 or porcentaje_enganche > 50:
-            raise ValueError("El porcentaje de enganche debe estar entre 20 y 50")
+        # porcentaje_enganche = float(input("Ingrese el porcentaje de enganche (entre 20 y 50): "))
+        # if porcentaje_enganche < 20 or porcentaje_enganche > 50:
+        #     raise ValueError("El porcentaje de enganche debe estar entre 20 y 50")
 
-        enganche = precio_carro * (porcentaje_enganche / 100)
+        enganche = precio_carro * (.2)
 
         tabla_financiamiento = []
 

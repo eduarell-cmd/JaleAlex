@@ -1,6 +1,7 @@
 from flask import *
 from flask_sqlalchemy import SQLAlchemy
 from conn import *
+from arrayGet import *
 app = Flask(__name__)
 
 
@@ -11,6 +12,15 @@ def home():
     cursor.execute("SELECT * FROM autos")
     autos = cursor.fetchall()
     return render_template('papu.html',autos=autos)
+
+@app.route("/venta")
+def venta():
+    
+    return render_template('venta.html')
+
+
+
+
 
 if __name__ == "__main__":
     app.run(debug=True)
