@@ -18,17 +18,17 @@
                 <div class="col-md-6">
                     <h2>Detalles del Carro</h2>
                     <ul class="list-group">
-                        <li class="list-group-item"><strong>Modelo:</strong> ${car.model}</li>
-                        <li class="list-group-item"><strong>Marca:</strong> ${car.branch}</li>
-                        <li class="list-group-item"><strong>Año:</strong> ${car.year}</li>
-                        <li class="list-group-item"><strong>Color:</strong> ${car.color}</li>
-                        <li class="list-group-item"><strong>Transmisión:</strong> ${car.transmition}</li>
-                        <li class="list-group-item"><strong>Motor:</strong> ${car.engine}</li>
-                        <li class="list-group-item"><strong>Litros:</strong> ${car.liters}</li>
-                        <li class="list-group-item"><strong>HP:</strong> ${car.hp}</li>
-                        <li class="list-group-item"><strong>Puertas:</strong> ${car.doors}</li>
-                        <li class="list-group-item"><strong>Tipo de Carro:</strong> ${car.car_type}</li>
-                        <li class="list-group-item"><strong>Precio:</strong> ${car.precio}</li>
+                        <li class="list-group-item"><strong>Modelo:</strong> {{car.model}}</li>
+                        <li class="list-group-item"><strong>Marca:</strong> {{car.branch}}</li>
+                        <li class="list-group-item"><strong>Año:</strong> {{car.year}}</li>
+                        <li class="list-group-item"><strong>Color:</strong> {{car.color}}</li>
+                        <li class="list-group-item"><strong>Transmisión:</strong> {{car.transmition}}</li>
+                        <li class="list-group-item"><strong>Motor:</strong> {{car.engine}}</li>
+                        <li class="list-group-item"><strong>Litros:</strong> {{car.liters}}</li>
+                        <li class="list-group-item"><strong>HP:</strong> {{car.hp}}</li>
+                        <li class="list-group-item"><strong>Puertas:</strong> {{car.doors}}</li>
+                        <li class="list-group-item"><strong>Tipo de Carro:</strong> {{car.car_type}}</li>
+                        <li class="list-group-item"><strong>Precio:</strong> {{car.precio}}</li>
                     </ul>
                 </div>
             </div>
@@ -50,11 +50,11 @@
                     
                     {% for item in financiamientos %}
                     <tr>
-                        <td>${item.meses}</td>
-                        <td>${item.enganche}</td>
-                        <td>${item.mensualidad}</td>
-                        <td>${item.interes}</td>
-                        <td>${item.monto_total_con_interes}</td>
+                        <td>{{item.meses}}</td>
+                        <td>{{item.enganche}}</td>
+                        <td>{{item.mensualidad}}</td>
+                        <td>{{item.interes}}</td>
+                        <td>{{item.monto_total_con_interes}}</td>
                     </tr>
                     {% endfor %}
                 </tbody>
