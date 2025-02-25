@@ -17,25 +17,54 @@
             <div class="row">
                 <div class="col-md-6">
                     <h2>Detalles del Carro</h2>
-                    <ul class="list-group">
-                        <li class="list-group-item"><strong>Modelo:</strong> {{car.model}}</li>
-                        <li class="list-group-item"><strong>Marca:</strong> {{car.branch}}</li>
-                        <li class="list-group-item"><strong>Año:</strong> {{car.year}}</li>
-                        <li class="list-group-item"><strong>Color:</strong> {{car.color}}</li>
-                        <li class="list-group-item"><strong>Transmisión:</strong> {{car.transmition}}</li>
-                        <li class="list-group-item"><strong>Motor:</strong> {{car.engine}}</li>
-                        <li class="list-group-item"><strong>Litros:</strong> {{car.liters}}</li>
-                        <li class="list-group-item"><strong>HP:</strong> {{car.hp}}</li>
-                        <li class="list-group-item"><strong>Puertas:</strong> {{car.doors}}</li>
-                        <li class="list-group-item"><strong>Tipo de Carro:</strong> {{car.car_type}}</li>
-                        <li class="list-group-item"><strong>Precio:</strong> {{car.precio}}</li>
-                    </ul>
+                    <table class="table">
+                        <thead>
+                          <tr>
+                            <th scope="col"><strong>Modelo:</strong></th>
+                            <th scope="col"><strong>Marca:</strong></th>
+                            <th scope="col"><strong>Año:</strong></th>
+                            <th scope="col"><strong>Color:</strong></th>
+                            <th scope="col"><strong>Transmision:</strong></th>
+                            <th scope="col"><strong>Motor:</strong></th>
+                            <th scope="col"><strong>litros:</strong></th>
+                            <th scope="col"><strong>HP:</strong></th>
+                            <th scope="col"><strong>Puertas:</strong></th>
+                            <th scope="col"><strong>Tipo de Carro:</strong></th>
+                            <th scope="col"><strong>Precio:</strong></th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <th scope="row">{{car.model}}</th>
+                            <td>{{car.branch}}</td>
+                            <td>{{car.year}}</td>
+                            <td>{{car.color}}</td>
+                            <td>{{car.transmition}}</td>
+                            <td>{{car.engine}}</td>
+                            <td>{{car.liters}}</td>
+                            <td>{{car.hp}}</td>
+                            <td>{{car.doors}}</td>
+                            <td>{{car.car_type}}</td>
+                            <td>${{car.precio}}</td>
+                          </tr>
+                        </tbody>
+                      </table>
                 </div>
             </div>
         </div>
     </section>
     <section class="my-5"></section>
         <div class="container">
+            <div class="d-flex justify-content-between">
+                <h2>Cotizacion de carro</h2>
+                <form action="{{ url_for('vender_carro') }}" method="post">
+                    <input type="hidden" name="carro_id" value="{{ car.id }}">
+                    <button type="submit" class="btn btn-danger">
+                        Comprado
+                    </button>
+                </form>
+                
+              </div>
             <table id="myTable" class="display">
                 <thead>
                     <tr>
@@ -52,16 +81,42 @@
                     <tr>
                         <td>{{item.meses}}</td>
                         <td>{{item.enganche}}</td>
-                        <td>{{item.mensualidad}}</td>
+                        <td>${{item.mensualidad}}</td>
                         <td>{{item.interes}}</td>
-                        <td>{{item.monto_total_con_interes}}</td>
+                        <td>${{item.monto_total_con_interes}}</td>
                     </tr>
                     {% endfor %}
                 </tbody>
             </table>
         </div>
     </section>
-   
+    <script>
+        function venderCarro(button) {
+            let carroId = button.getAttribute("data-id");
+    
+            fetch('/vender_carro', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ 
+                    cliente: "ClienteEjemplo",  // Aquí puedes cambiarlo dinámicamente
+                    carro_id: carroId
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === "success") {
+                    alert("Carro vendido exitosamente!");
+                    button.closest("tr").remove(); // Elimina la fila si está en una tabla
+                } else {
+                    alert("Error al vender el carro");
+                }
+            })
+            .catch(error => console.error("Error:", error));
+        }
+    </script>
+    
     <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
     <script src="https://cdn.datatables.net/2.2.2/js/dataTables.js"></script>
     <script>

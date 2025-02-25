@@ -27,7 +27,16 @@ def venta():
     financiamiento = ProcesoVenta.validar_costo(car)
     return render_template('venta.html',financiamientos = financiamiento,car=car)
 
-    
+@app.route('/vender_carro', methods=['POST'])
+def vender_carro():
+    carro_id = request.form.get("carro_id")  
+    cliente = "ClienteEjemplo"  
+    carro_a_vender = next((carro for carro in nissan.carros if str(carro.id) == carro_id), None)
+    if carro_a_vender:
+        nissan.vender_carro(cliente, carro_a_vender)
+        return render_template('papu.html',autos=carros)
+    else:
+        return "Error: Carro no encontrado", 404
     
     
 
