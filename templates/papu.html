@@ -12,6 +12,7 @@
     <table id="myTable" class="display">
         <thead>
             <tr>
+                <th style="text-align: center;">Id</th>
                 <th style="text-align: center;">Model</th>
                 <th style="text-align: center;">Branch</th>
                 <th style="text-align: center;">Year</th>
@@ -29,6 +30,7 @@
         <tbody>
             {% for auto in autos %}
             <tr>
+                <td style="text-align: center;">{{auto.id}}</td>
                 <td style="text-align: center;">{{auto.model}}</td>
                 <td style="text-align: center;">{{auto.branch}}</td>
                 <td style="text-align: center;">{{auto.year}}</td>
@@ -41,9 +43,11 @@
                 <td style="text-align: center;">{{auto.car_type}}</td>
                 <td style="text-align: center;">{{auto.precio}}</td>
                 <td style="text-align: center;">
-                        <a href="{{ url_for('venta') }}" type="button" class="btn btn-primary">
+                        
+                    <a href="{{ url_for('venta') }}" type="button" class="btn btn-primary"  id="{{ auto.id }}"onclick="openNewTab(id)">
                             Cotiza
                         </a>
+                
                 </td>
             </tr>
             {% endfor %}
@@ -57,6 +61,11 @@
         $(document).ready(function () {
             $('#myTable').DataTable();
         });
+    </script>
+    <script>
+        function openNewTab(buttonId) {
+            window.open("/venta?id=" + buttonId);
+        }
     </script>
 </body>
 </html>
