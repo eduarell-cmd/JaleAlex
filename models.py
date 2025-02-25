@@ -14,7 +14,8 @@ class cliente:
     def __str__(self):
         return f"Nombre: {self.nombre} Apellido: {self.apellido} Edad: {self.edad} Telefono: {self.telefono} Email: {self.email}"
 class carro:
-    def __init__(self,model,branch,year,color,transmition,engine,liters,hp,doors,car_type,precio):
+    def __init__(self,id,model,branch,year,color,transmition,engine,liters,hp,doors,car_type,precio):
+        self.id = id
         self.model = model
         self.branch = branch
         self.year = year
@@ -107,10 +108,8 @@ class ProcesoVenta:
         }
 
         
-        enganche = float(input("Ingrese el porcentaje de enganche (entre 20 y 50): "))
-        if enganche < precio_carro*(0.2) or enganche > precio_carro*(0.5):
-             raise ValueError("El porcentaje de enganche debe estar entre 20 y 50")
-
+        enganche = precio_carro * 0.2
+        
         tabla_financiamiento = []
 
         for meses, interes in opciones_financiamiento.items():
@@ -135,11 +134,13 @@ class Agencia:
     
     def inventario(self,arr):
         for auto in arr:
-            car = carro(auto["modelo"],auto["marca"],auto["año"],auto["color"],auto["transmision"],auto["motor"],auto["litros"],auto["hp"],auto["puertas"],auto["tipo_de_carro"],auto["precio"])
+            car = carro(auto["id"],auto["modelo"],auto["marca"],auto["año"],auto["color"],auto["transmision"],auto["motor"],auto["litros"],auto["hp"],auto["puertas"],auto["tipo_de_carro"],auto["precio"])
             self.add_carro(car)
 
     def add_carro(self,carro):
         self.carros.append(carro)
+    def getCarros(self):
+        return self.carros
 
     def add_cliente(self,cliente):
         self.clientes.append(cliente)
@@ -149,7 +150,7 @@ class Agencia:
         self.carros.remove(carro)
         conn = get_db_connection()
         cursor = conn.cursor()
-        cursor.execute("SELECT * FROM autos")
+        cursor.execute("delete from autos where modelo = %s",(carro.model))
 
         #conectar con la base de datos y guardar la venta, remover el csrro de inventario
 
