@@ -15,7 +15,7 @@ def home():
     autos2 = cursor.fetchall()
     nissan.inventario(autos2)
     carros= nissan.carros
-    
+
     return render_template('papu.html',autos=carros)
 
 @app.route('/venta')
@@ -24,8 +24,7 @@ def venta():
     print(button_id)
     if button_id ==0:
         return redirect('/')
-    return (nissan.getCarros()).to_json()
-
+    return render_template('venta.html')
     
     
     
