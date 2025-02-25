@@ -1,5 +1,6 @@
 #Opcional por si le queremos meter mas chile al queso
 from conn import *
+from decimal import Decimal
 
 class cliente:
     def __init__(self,nombre,apellido,edad,telefono,email,curp,rfc):
@@ -99,7 +100,7 @@ class ProcesoVenta:
         self.carro = carro
         self.cliente = cliente
 
-    def validar_costo(self,carro):
+    def validar_costo(carro):
         precio_carro = carro.precio
         opciones_financiamiento = {
             12: 0.05,  
@@ -108,20 +109,21 @@ class ProcesoVenta:
         }
 
         
-        enganche = precio_carro * 0.2
+        
+        enganche = precio_carro/5
         
         tabla_financiamiento = []
 
         for meses, interes in opciones_financiamiento.items():
             monto_financiado = precio_carro - enganche
-            monto_total_con_interes = monto_financiado * (1 + interes)
+            monto_total_con_interes = monto_financiado * (Decimal(1) + Decimal(interes)) 
             mensualidad = monto_total_con_interes / meses
             tabla_financiamiento.append({
             'meses': meses,
             'enganche': enganche,
-            'mensualidad': mensualidad,
+            'mensualidad': int(mensualidad),
             'interes': interes,
-            'monto_total_con_interes': monto_total_con_interes
+            'monto_total_con_interes': int(monto_total_con_interes)
             })
 
         return tabla_financiamiento
@@ -150,7 +152,7 @@ class Agencia:
         self.carros.remove(carro)
         conn = get_db_connection()
         cursor = conn.cursor()
-        cursor.execute("delete from autos where modelo = %s",(carro.model))
+        cursor.execute("delete from autos where modelo = %s",(carro.id))
 
         #conectar con la base de datos y guardar la venta, remover el csrro de inventario
 
