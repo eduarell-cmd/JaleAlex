@@ -42,6 +42,31 @@ app = Flask(__name__)
 queue = []
 waitlist = []
 
+
+class Queue:
+    def __init__(self):
+        self.queue = []
+        self.waitlist = []
+
+    def enqueue(self, item):
+        if len(self.queue) < 10:
+            self.queue.append(item)
+        else:
+            self.waitlist.append(item)
+
+    def dequeue(self):
+        if len(self.queue) > 0:
+            self.queue.pop(0)
+            if len(self.waitlist) > 0:
+                self.queue.append(self.waitlist.pop(0))
+
+    def get_queue(self):
+        return self.queue
+
+    def get_waitlist(self):
+        return self.waitlist
+        
+
 @app.route('/queue', methods=['GET','POST'])
 def add_to_queue():
     name = request.form.get('name')  # Obtener el valor del formulario
@@ -51,5 +76,6 @@ def add_to_queue():
         else:
             waitlist.append(name)
     return render_template('Login.html', queue=queue, waitlist=waitlist)
+
 if __name__ == "__main__":
     app.run(debug=True)
