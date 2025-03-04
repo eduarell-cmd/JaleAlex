@@ -39,8 +39,8 @@ app = Flask(__name__)
 #     else:
 #         return "Error: Carro no encontrado", 404
 
-queue = []
-waitlist = []
+#queue = []
+#waitlist = []
 
 
 class Queue:
@@ -65,17 +65,25 @@ class Queue:
 
     def get_waitlist(self):
         return self.waitlist
-        
+
+queue = Queue()
 
 @app.route('/queue', methods=['GET','POST'])
 def add_to_queue():
     name = request.form.get('name')  # Obtener el valor del formulario
     if name:  # Verificar que el nombre no esté vacío
-        if len(queue) < 10:
-            queue.append(name)
-        else:
-            waitlist.append(name)
-    return render_template('Login.html', queue=queue, waitlist=waitlist)
+        queue.enqueue(name)
+    lista = queue.get_queue()
+    lista2 = queue.get_waitlist()
+        
+    return render_template('Login.html', queue=lista, waitlist=lista2)
+
+@app.route('/dequeue', methods=['GET','POST'])
+def dequeue():
+    queue.dequeue()
+    lista = queue.get_queue()
+    lista2 = queue.get_waitlist()
+    return render_template('Login.html', queue=lista, waitlist=len(lista2))
 
 if __name__ == "__main__":
     app.run(debug=True)
