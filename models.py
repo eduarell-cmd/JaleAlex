@@ -116,7 +116,7 @@ class ProcesoVenta:
 
         for meses, interes in opciones_financiamiento.items():
             monto_financiado = precio_carro - enganche
-            monto_total_con_interes = monto_financiado * (Decimal(1) + Decimal(interes)) 
+            monto_total_con_interes = (monto_financiado * (Decimal(1) + Decimal(interes)))+enganche
             mensualidad = monto_total_con_interes / meses
             tabla_financiamiento.append({
             'meses': meses,
