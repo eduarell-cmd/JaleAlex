@@ -1,8 +1,8 @@
 from flask import *
-from flask_sqlalchemy import SQLAlchemy
-from conn import *
-from models import *
-import queue
+# from flask_sqlalchemy import SQLAlchemy
+# from conn import *
+# from models import *
+# import queue
 
 app = Flask(__name__)
 
@@ -39,10 +39,9 @@ app = Flask(__name__)
 #     else:
 #         return "Error: Carro no encontrado", 404
 
-task_queue = queue.Queue()
-
 queue = []
 waitlist = []
+
 
 class Queue:
     def __init__(self):
@@ -68,12 +67,15 @@ class Queue:
         return self.waitlist
         
 
-@app.route('/queue',methods=['POST'])
-def queue(name):
-    if len(queue) < 10:
-        queue.append(request.form.get('name'))
-    else: 
-        waitlist.append(request.form.get('name'))
-    return render_template ('Login.html')
+@app.route('/queue', methods=['GET','POST'])
+def add_to_queue():
+    name = request.form.get('name')  # Obtener el valor del formulario
+    if name:  # Verificar que el nombre no esté vacío
+        if len(queue) < 10:
+            queue.append(name)
+        else:
+            waitlist.append(name)
+    return render_template('Login.html', queue=queue, waitlist=waitlist)
+
 if __name__ == "__main__":
     app.run(debug=True)

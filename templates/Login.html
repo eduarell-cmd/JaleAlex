@@ -42,14 +42,25 @@
         <h1>Login</h1>
     </header>
     <main>
-        <div class="form-container"></div>
+
+        <div class="form-container">
             <form action="/queue" method="POST">
-                <div class="form-group"></div>
-                    <label for="name">Nombre:</label>
-                    <input type="text" class="form-control" id="name" name="name" required>
-                <button type="submit" class="btn btn-primary">Enviar</button>
+                <label for="name">Nombre:</label>
+                <input type="text" id="name" name="name" required>
+                <br>
+                <button type="submit">Enviar</button>
+
             </form>
         </div>
+        <div class="form-container">
+            {% if queue or waitlist %}
+                <p>Queue: {{ queue }}</p>
+            {% endif %}
+            {% if waitlist %}
+                <p>Waitlist: {{ waitlist }}</p>
+            {% endif %}
+        </div>
+
     </main>
     <footer>
         <p>Encuéntranos en <a href="https://github.com"><img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub" class="github-icon"></a></p>
