@@ -83,7 +83,7 @@ def dequeue():
     queue.dequeue()
     lista = queue.get_queue()
     lista2 = queue.get_waitlist()
-    return render_template('Login.html', queue=lista, waitlist=len(lista2))
+    return render_template('Login.html', queue=lista, waitlist=lista2)
 
 if __name__ == "__main__":
     app.run(debug=True)
